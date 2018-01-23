@@ -3,8 +3,8 @@
   <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="yanm1ng&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
+  <meta name="description" content="c, java, android, python developer">
+  <meta name="keyword" content="vexo">
   
     <link rel="shortcut icon" href="/css/images/logo.png">
   
@@ -45,19 +45,13 @@
       
         <li class="list-item">
           
-            <a href="/tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
             <a href="/archives/" class="item-link">Archives</a>
           
         </li>
       
         <li class="list-item">
           
-            <a href="/project/" class="item-link">Projects</a>
+            <a href="/tags/" class="item-link">Tags</a>
           
         </li>
       
@@ -84,19 +78,13 @@
         
           <li class="menu-item">
             
-              <a href="/tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
               <a href="/archives/" class="menu-link">Archives</a>
             
           </li>
         
           <li class="menu-item">
             
-              <a href="/project/" class="menu-link">Projects</a>
+              <a href="/tags/" class="menu-link">Tags</a>
             
           </li>
         
@@ -128,7 +116,7 @@
         Accept: 'application/vnd.github.v3.raw'
       },
       type: 'get',
-      url: 'https://api.github.com/users/yanm1ng/repos',
+      url: 'https://api.github.com/users/LittleWaver/repos',
       success: function (data) {
         var repos = data.sort(function(a, b) {
           return (b.stargazers_count - a.stargazers_count)
@@ -168,7 +156,7 @@
   <p class="copyright">
     &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
     <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo">Vexo</a>
   </p>
 </footer>
 
@@ -210,5 +198,6 @@
 <!-- Baidu Tongji -->
 
 <script src="/js/script.js"></script>
+
   </body>
 </html>
