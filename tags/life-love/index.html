@@ -10,7 +10,7 @@
   
   <title>
     
-      Tags | Waver&#39;s Blog
+      Waver&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -100,55 +100,40 @@
 </header>
 
     <div id="article-banner">
-  <h2>Tags</h2>
-  <p class="post-date">标签分类</p>
+  <h2>Archives</h2>
+  <p class="post-date">文章时间线</p>
 </div>
-<main class="app-body">
-  <div id="tag-cloud">
+<main class="app-body" id="archives">
+  
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2018
+  </h1>
+  <div class="section-list">
     
-      <a class="tag1" data-name="tag-life, love">life, love</a>
     
-      <a class="tag2" data-name="tag-git">git</a>
+      <div class="section-list-item">
+        <a href="/2018/01/23/putting-up-git-server-and-using-it/" class="archive-title">远程Ubuntu系统上git服务器的搭建</a>
+        <p class="archive-date">01-23</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/01/23/huizi-come-and-see/" class="archive-title">huizi, come and see</a>
+        <p class="archive-date">01-23</p>
+      </div>
     
   </div>
+</section>
   
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-life, love">life, love</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/01/23/huizi-come-and-see/">huizi, come and see</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-git">git</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2018/01/23/putting-up-git-server-and-using-it/">远程Ubuntu系统上git服务器的搭建</a>
-          </li>
-        </ul>
-        
-    </div>
-    
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/tags/index.html'
-    $('#article-banner').geopattern(url)
-    $('.header').removeClass('fixed-header')
-
-    var tag = location.hash.replace('#', '')
-    if (tag) {
-      var tagId = "#tag-" + tag;
-      $("html, body").animate({
-        scrollTop: $(tagId).offset().top 
-      }, 400)
-    }
+    var url = 'http://yoursite.com/tags/life-love/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
   })();
 </script>
 
