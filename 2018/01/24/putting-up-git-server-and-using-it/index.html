@@ -117,38 +117,41 @@
 </li>
 <li><p>[此步骤可以不操作，如果不操作，则SSH的端口号就为默认的22]termianl下键入命令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>打开ssh配置文件并编辑，导航至行” #port 22 “，将22修改为你想要修改为的端口号，并删去”#”，将该行代码去除注释化并生效，最后操作vi保存修改</p>
-<ol>
+</li>
 <li>terminal下键入命令来重启ssh服务<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo service sshd restart</span><br><span class="line"><span class="meta">#</span> 或 </span><br><span class="line">sudo /etc/init.d/sshd restart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="远程Ubuntu系统安装git"><a href="#远程Ubuntu系统安装git" class="headerlink" title="远程Ubuntu系统安装git"></a>远程Ubuntu系统安装git</h3><ol>
-<li>terminal下键入命令进行git安装<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+<li><p>terminal下键入命令进行git安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+<p>或键入如下命令进行所要求版本号的源码下载</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://github.com/git/git/archive/X.X.X.tar.gz</span><br><span class="line"><span class="meta">#</span> X.X.X代表你所需要的git版本号</span><br></pre></td></tr></table></figure>
+<p>解压git安装包到当前目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar zxvf git-X.X.X.tar.gz</span><br></pre></td></tr></table></figure>
+<p>进入git安装包被解压后的目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd git-X.X.X</span><br></pre></td></tr></table></figure>
+<p>对git源码进行编译并生成可执行文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>将生成的git可执行文件链接到系统的可执行程序目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s /usr/local/git/bin/* /usr/bin/</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>或键入如下命令进行所要求版本号的源码下载<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget https://github.com/git/git/archive/X.X.X.tar.gz</span><br><span class="line"><span class="meta">#</span> X.X.X代表你所需要的git版本号</span><br></pre></td></tr></table></figure></p>
-<p>解压git安装包到当前目录<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar zxvf git-X.X.X.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>进入git安装包被解压后的目录<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd git-X.X.X</span><br></pre></td></tr></table></figure></p>
-<p>对git源码进行编译并生成可执行文件<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<p>将生成的git可执行文件链接到系统的可执行程序目录<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s /usr/local/git/bin/* /usr/bin/</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>使用以下命令来查看是否安装成功以及安装的git版本号<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<li><p>使用以下命令来查看是否安装成功以及安装的git版本号</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="上传Windows系统SSH公钥到远程Ubuntu系统"><a href="#上传Windows系统SSH公钥到远程Ubuntu系统" class="headerlink" title="上传Windows系统SSH公钥到远程Ubuntu系统"></a>上传Windows系统SSH公钥到远程Ubuntu系统</h3><ol>
-<li>本地Window系统下，下载git Windows版并安装，打开Git Bash，运行命令<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<li><p>本地Window系统下，下载git Windows版并安装，打开Git Bash，运行命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>会在Windows系统的用户目录下隐藏目录ssh（如：C:\Users\Administrator.ssh）下生成id_rsa（私钥）和id_rsa.pub（公钥）</p>
-<ol>
-<li>本地Window系统下，Git Bash下导航到保存公钥的目录<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd C:\Users\Administrator\.ssh</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>将公钥改名” mv id_rsa.pub id_rsa_xxx “，并运行命令，（此命令中的.ssh目录必须为远程Ubuntu服务器上的绝对路径，不能写为~/.ssh）将公钥上传到ip地址为xxx.xxx.xxx.xxx的远程Ubuntu系统用户名为username的主目录下的隐藏文件夹.ssh[需要你输入ip地址为xxx.xxx.xxx.xxx的远程Ubuntu系统的用户username的登录密码]<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -r id_rsa.pub_xxx username@xxx.xxx.xxx.xxx:/home/username/.ssh/</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>远程Ubuntu系统terminal下将Windows系统上传来的公钥复制到authorized_keys文件中<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /home/username/.ssh/id_rsa_xxx &gt;&gt; /home/username/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<li><p>本地Window系统下，Git Bash下导航到保存公钥的目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd C:\Users\Administrator\.ssh</span><br></pre></td></tr></table></figure>
+<p>将公钥改名” mv id_rsa.pub id_rsa_xxx “，并运行命令，（此命令中的.ssh目录必须为远程Ubuntu服务器上的绝对路径，不能写为~/.ssh）将公钥上传到ip地址为xxx.xxx.xxx.xxx的远程Ubuntu系统用户名为username的主目录下的隐藏文件夹.ssh[需要你输入ip地址为xxx.xxx.xxx.xxx的远程Ubuntu系统的用户username的登录密码]</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -r id_rsa.pub_xxx username@xxx.xxx.xxx.xxx:/home/username/.ssh/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程Ubuntu系统terminal下将Windows系统上传来的公钥复制到authorized_keys文件中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /home/username/.ssh/id_rsa_xxx &gt;&gt; /home/username/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="在远程Ubuntu系统创建项目仓库"><a href="#在远程Ubuntu系统创建项目仓库" class="headerlink" title="在远程Ubuntu系统创建项目仓库"></a>在远程Ubuntu系统创建项目仓库</h3><ol>
@@ -160,10 +163,8 @@
 </li>
 <li><p>进入项目目录中运行命令对git项目进行初始化</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git --bare init</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>出现Initialized empty Git respository in /home/username/Respository/Coder-Waver.git/时代表初始化成功。</p>
-<ol>
+</li>
 <li>这样一个叫Code-Waver的git仓库就创建好了。</li>
 </ol>
 <h2 id="远程Ubuntu系统上git服务器的使用测试"><a href="#远程Ubuntu系统上git服务器的使用测试" class="headerlink" title="远程Ubuntu系统上git服务器的使用测试"></a><strong><em>远程Ubuntu系统上git服务器的使用测试</em></strong></h2><hr>
